@@ -19,9 +19,4 @@ This repository contains a bash script that organizes JPEG images by camera mode
   - **macOS**: `brew install exiftool`
   - **Windows**: [Download and install ExifTool](https://exiftool.org/)
 
-## Usage
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
