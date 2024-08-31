@@ -1,0 +1,41 @@
+
+### commands.sh
+
+```bash
+#!/bin/bash
+# Script Collection
+
+# 1. Open and Refresh Web Page
+win1 = window.open("https://www.yourpage.com");
+timer1 = setInterval(function(){win1.location.href="https://www.yourpage.com"},10*60*1000);
+
+# 2. Reduce PDF File Size
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
+-dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf
+
+# 3. Combine Images into a PDF
+convert $(ls -1v *.jpg) book.pdf
+
+# 4. Compress JPEG Images
+convert *.jpeg -resize 1024x 
+
+# 5. Secure File Deletion
+shred -u -z -v -n 5 /path/to/mount/point
+
+# 6. Shrink PDF File
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
+-dNOPAUSE -dBATCH -dColorImageResolution=150 \
+-sOutputFile=output.pdf someBigFile.pdf
+
+# 7. Convert PDF to Text with OCR
+pdftoppm -png 2023-EROLLGEN-U05-49-DraftRoll-Revision1-ENG-46-WI.pdf output
+for file in output*.png; do tesseract "$file" "$(basename "$file" .png)"; done
+cat output-*.txt > combined_output.txt
+
+# 8. Manage USB Device Rules
+sudo nano /etc/udev/rules.d/99-brave-usb.rules
+sudo udevadm control --reload-rules
+
+# 9. Setup a Shared Folder with Samba
+sudo chmod a+rwx /srv/samba
+sudo systemctl restart smbd
